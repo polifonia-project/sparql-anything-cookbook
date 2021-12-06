@@ -9,7 +9,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix xhtml: <http://www.w3.org/1999/xhtml#> 
 PREFIX dom: <https://html.spec.whatwg.org/#>
 
-SELECT ?resource ?surfaceForm {
+SELECT ?text ?resource ?surfaceForm {
 	 SERVICE <x-sparql-anything:> {
 		 fx:properties fx:location <http://api.dbpedia-spotlight.org/en/annotate> ;
 		 	fx:http.query.text ?_text ;
@@ -20,5 +20,6 @@ SELECT ?resource ?surfaceForm {
 
 	 [] <http://sparql.xyz/facade-x/data/%40URI> ?resource ;
 	 	<http://sparql.xyz/facade-x/data/%40surfaceForm> ?surfaceForm .
-	 }
+	  BIND(?_text as ?text)
+	}
 }
